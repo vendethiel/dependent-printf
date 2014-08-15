@@ -19,6 +19,8 @@ interpFormat FEnd = String
 interpFormat (FString f) = String -> interpFormat f
 interpFormat (FInt f) = Int -> interpFormat f
 interpFormat (FList f) = String -> List String -> interpFormat f
+--interpFormat (FList f) = (t : Type) -> List t -> interpFormat f -- Sadly, this is not c++, so the compiler will complain with "no inst Show t"
+                                                                  -- (c++ would just subst failure if we dont have show)
 interpFormat (FContent _ f) = interpFormat f 
 
 formatString : String -> Format
